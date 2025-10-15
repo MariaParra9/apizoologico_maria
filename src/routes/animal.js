@@ -9,9 +9,16 @@ router.post("/animals", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+
+//Consultar todos los animales
+router.get("/animalsAll", (req, res) => {
+    animalSchema.find()
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
 //Consultar todos los animales
 router.get("/animals", (req, res) => {
-    animalSchema.find()
+    animalSchema.find({edad:{$gte:1}})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
